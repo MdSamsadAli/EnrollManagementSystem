@@ -41,30 +41,33 @@
 				
 		<div class="form-group col-md-6">
 			<label for="role">Select a Role</label>
-			<input type="text" name="role" class="form-control">
-			{{-- <select name="role_id"  cols="5" rows="5" class="form-control"> --}}
-				{{-- @foreach($roles as $role) --}}
-				{{-- <option value="1">role1</option>
-				<option value="0">role2</option> --}}
-					{{-- <option value="{{ $role->id}}">{{ $role->name }}</option> --}}
-				{{-- @endforeach --}}
-			{{-- </select> --}}
+			<select name="roll_name"  cols="5" rows="5" class="form-control">
+				@foreach($roll as $roll)
+					<option value="{{ $roll->name}}">{{ $roll->name }}</option>
+				@endforeach
+			</select>
+		</div>
+
+		<div class="form-group col-md-6">
+			<label for="role">Select a Department</label>
+			<select name="department"  cols="5" rows="5" class="form-control">
+				@foreach($departments as $department)
+					<option value="{{ $department->name}}">{{ $department->name }}</option>
+				@endforeach
+			</select>
 		</div>
 		
 		<div class="form-group col-md-6">
 			<label for="full_time">Position:</label>
-			<input type="text" name="position" class="form-control">
-			{{-- <select name="full_time" id="full_time" class="form-control">
-				<option value="1">Full-Time</option>
-				<option value="0">Part-Time</option>					
-			</select> --}}
+			<select id="full_time" name="position" class="form-control">
+				<option value="Full-Time">Full-Time</option>
+				<option value="Part-Time">Part-Time</option>					
+			</select>
 		</div>
 		
 		<div class="text-center">
 			<button class="btn btn-success" type="submit" >Create</button>
 		</div>
 	</form>
-	
 
-
-@endsection
+	@endsection

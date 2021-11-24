@@ -3,15 +3,13 @@
 @section('content')
 
 	<div class="col-lg-12">
-        <h1 class="page-header">Payroll: employeeName
+        <h1 class="page-header">Payroll: Employee Name
 		{{-- <h1 class="page-header">Payroll : {{ $employee->name }}	 --}}
-			<!--input type="text" id="filterInput" onkeyup="filterFunction()" placeholder="Search Employees...."-->
-		</h1>	
+			{{-- <input type="text" id="filterInput" onkeyup="filterFunction()" placeholder="Search Employees...."> --}}
+		{{-- </h1>	 --}}
 	</div>
-    <a href="#" class="btn btn-primary">created</a>
+    <a href="{{route('payroll.create')}}" class="btn btn-primary">created</a>
 	{{-- <a href="{{ route('payrolls.create', ['id'=>$employee->id]) }}" class="btn btn-primary">Create</a> --}}
-    <a href="#" class="btn btn-info">Download all payroll listed</a>
-	{{-- <a href="{{ route('payrolls.pdf', ['id'=>$employee->id]) }}" class="btn btn-info">Download all payroll listed</a> --}}
     <a href="#" class="btn btn-danger">Recycle Bin </a>
 	{{-- <a href="{{ route('payrolls.bin') }}" class="btn btn-danger">Recycle Bin</a> --}}
 

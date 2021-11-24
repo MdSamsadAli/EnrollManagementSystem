@@ -21,8 +21,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="{{ route('department.index') }}">Departments</a></li>
 				<li><a href="{{ route('roll.index') }}">Roles</a></li>
-				<li><a href="#">Payroll</a></li>
-				{{-- <li><a href="{{ route('employees.index') }}">Payroll</a></li>				 --}}
+				<li><a href="{{ route('employee.index') }}">Employee</a></li>				
+				<li><a href="{{ route('payroll.index') }}">Payroll</a></li>				
 			</ul>
 
 			<!-- Right Side Of Navbar -->
@@ -32,22 +32,26 @@
 					<li><a href="#">Login</a></li>
 					<li><a href="#">Register</a></li>
 					
-				@else
-					<li><a href="{{ route('home') }}">Dashboard</a></li>
+				{{-- @else --}}
+					{{-- <li><a href="{{ route('home') }}">Dashboard</a></li> --}}
+					<li><a href="{{route('dashboard')}}">Dashboard</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-							{{ Auth::user()->name }} <span class="caret"></span>
+							{{-- {{ Auth::user()->name }} <span class="caret"></span> --}}
+							<span class="caret"></span>
 						</a>
 
 						<ul class="dropdown-menu">
 							<li>
-								<a href="{{ route('logout') }}"
+								{{-- <a href="{{ route('logout') }}" --}}
+								<a href="#"
 									onclick="event.preventDefault();
 											 document.getElementById('logout-form').submit();">
 									Logout
 								</a>
 
-								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+								{{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> --}}
+									<form id="logout-form" action="#" method="POST" style="display: none;">
 									{{ csrf_field() }}
 								</form>
 							</li>

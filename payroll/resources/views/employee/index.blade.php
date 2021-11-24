@@ -7,9 +7,6 @@
 		<h1 class="text-center">Employees</h1>	
 	<hr> 
         <a href="{{route('employee.create')}}" class="btn btn-primary">Create</a>
-        <a href="#" class="btn btn-danger">Recylce Bin</a>
-	{{-- <a href="{{ route('employees.create') }}" class="btn btn-primary">Create</a> --}}
-	{{-- <a href="{{ route('employees.bin') }}" class="btn btn-danger">Recycle Bin</a> --}}
 	
 	<br>
 	<br>
@@ -42,8 +39,7 @@
 							<a href="{{route('employee.destroy', $employee->id)}}" class="btn btn-danger">Bin</a>
 						</td>
 						<td>
-                            <a href="#">Payroll Show</a>
-							{{-- <a href="{{ route('payrolls.show', ['id' => $employee->id]) }}" class="btn btn-info">Payroll</a> --}}
+                            <a href="{{route('roll.show', $employee->id)}}">Payroll Show</a>
 						</td>
 					</tr>
 				@endforeach
@@ -55,5 +51,4 @@
 		</tbody>						
 	</table>
     <div class="text-center">EmployeesLinks</div>
-	{{-- <div class="text-center">{{ $employees->links() }}</div> --}}
 @endsection

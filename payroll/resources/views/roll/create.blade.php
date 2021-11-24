@@ -21,9 +21,9 @@
 		
 		<div class="form-group col-lg-12">
 			<label for="department">Select a department</label>
-			<select name="department_id"  cols="5" rows="5" class="form-control">
+			<select name="department_name"  cols="5" rows="5" class="form-control">
 				@foreach($departments as $department)
-					<option value="{{ $department->id}}">{{ $department->name }}</option>
+					<option value="{{ $department->name}}">{{ $department->name }}</option>
 				@endforeach
 			</select>
 		</div>

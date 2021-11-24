@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\controllers\HomeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\departmentController;
-use App\Http\Controllers\employeeController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\rollController;
 use App\Models\department;
 use Facade\FlareClient\View;
@@ -27,40 +28,46 @@ Route::get('layouts', function(){
     return View('layouts.app');
 });
 
-// Route::get('/login', function ($id) {
-//     return view('layouts.app');
-// });
-
-Route::get('/home', function(){
-    return view('home');
+Route::get('show', function(){
+    return View('roll.show');
 });
 
-// Route::get('department/index', function () {
-//     return view('department.index');
-// });
+Route::get('/home', [HomeController::class, 'index'])->name('dashboard');
 
-Route::get('/department/index', [departmentController::class, 'index'])->name('department.index');
-Route::get('/department/create', [departmentController::class, 'create'])->name('department.create');
-Route::post('/department/store', [departmentController::class, 'store'])->name('departments.store');
+Route::get('/department/index', [DepartmentController::class, 'index'])->name('department.index');
+Route::get('/department/create', [DepartmentController::class, 'create'])->name('department.create');
+Route::post('/department/store', [DepartmentController::class, 'store'])->name('departments.store');
 
-Route::get('/department/{id}/edit', [departmentController::class, 'edit'])->name('department.edit');
-Route::post('/department/{id}/update', [departmentController::class, 'update'])->name('department.update');
-Route::get('/department/{id}/delete', [departmentController::class, 'destroy'])->name('department.destroy');
+Route::get('/department/{id}/edit', [DepartmentController::class, 'edit'])->name('department.edit');
+Route::post('/department/{id}/update', [DepartmentController::class, 'update'])->name('department.update');
+Route::get('/department/{id}/delete', [DepartmentController::class, 'destroy'])->name('department.destroy');
 
 
 
-Route::get('employee/index', [employeeController::class, 'index'])->name('employee.index');
-Route::get('employee/create', [employeeController::class, 'create'])->name('employee.create');
-Route::post('employee/store', [employeeController::class, 'store'])->name('employee.store');
-
-Route::get('/employee/{id}/edit', [employeeController::class, 'edit'])->name('employee.edit');
-Route::post('/employee/{id}/update', [employeeController::class, 'update'])->name('employee.update');
-Route::get('/employee/{id}/delete', [employeeController::class, 'destroy'])->name('employee.destroy');
+Route::get('employee/index', [EmployeeController::class, 'index'])->name('employee.index');
+Route::get('employee/create', [EmployeeController::class, 'create'])->name('employee.create');
+Route::post('employee/store', [EmployeeController::class, 'store'])->name('employee.store');
+Route::get('employee/{id}/show', [EmployeeController::class, 'show'])->name('employee.show');
 
 
+Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+Route::post('/employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
+Route::get('/employee/{id}/delete', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 
 
-Route::get('roll/index', [rollController::class, 'index'])->name('roll.index');
-Route::get('roll/create', [rollController::class, 'create'])->name('roll.create');
-Route::get('roll/store', [rollController::class, 'store'])->name('roll.store');
-// Route::get('roll/index', [employeeController::class, 'index'])->name('payroll.payroll');
+
+
+Route::get('roll/index', [RollController::class, 'index'])->name('roll.index');
+Route::get('roll/create', [RollController::class, 'create'])->name('roll.create');
+Route::get('roll/{id}/show', [RollController::class, 'show'])->name('roll.show');
+Route::post('roll/store', [RollController::class, 'store'])->name('roll.store');
+
+Route::get('/roll/{id}/edit', [RollController::class, 'edit'])->name('roll.edit');
+Route::post('/roll/{id}/update', [RollController::class, 'update'])->name('roll.update');
+
+Route::get('/roll/{id}/delete', [RollController::class, 'destroy'])->name('roll.destroy');
+
+
+Route::get('payroll/index', [PayrollController::class, 'index'])->name('payroll.index');
+Route::get('payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
+

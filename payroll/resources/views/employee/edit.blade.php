@@ -4,7 +4,7 @@
 @section('content')
 
 	<div class="col-lg-12">
-		<h1 class="page-header">Update Employee: {{$employees->name }}</h1>
+		<h1 class="page-header">Update Employee: {{ $employees->name }}</h1>
 	</div>
 		
 	<form action="{{ route('employee.update', $employees->id)}}" method="POST">
@@ -43,6 +43,11 @@
 		<div class="form-group col-md-2">
 			<label for="country">Role: </label>
 			<input type="text" name="role"  value= "{{ $employees->role}}" class="form-control">		
+		</div>
+
+		<div class="form-group col-md-2">
+			<label for="country">Department: </label>
+			<input type="text" name="department"  value= "{{ $employees->department}}" class="form-control">		
 		</div>
 
 		<div class="form-group col-md-2">

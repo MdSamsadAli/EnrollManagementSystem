@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\department;
+use App\Models\employee;
+use App\Models\Roll;
 use Illuminate\Http\Request;
 
-class rollController extends Controller
+class RollController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,8 @@ class rollController extends Controller
      */
     public function index()
     {
-        return view('roll.index');
+        $roll = Roll::all();
+        return view('roll.index', compact('roll'));
     }
 
     /**
@@ -23,7 +27,8 @@ class rollController extends Controller
      */
     public function create()
     {
-        return view('roll.create');
+        $departments = department::get();
+        return view('roll.create', compact('departments'));
         
     }
 
@@ -35,7 +40,13 @@ class rollController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd(request()->all());
+        $roll = new Roll();
+        $roll -> name = request('name');
+        $roll -> salary = request('salary');
+        $roll -> department = request('department_name');
+        $roll ->save();
+        return redirect()->route('roll.index');
     }
 
     /**
@@ -46,7 +57,11 @@ class rollController extends Controller
      */
     public function show($id)
     {
-        //
+        $roll = Roll::get();
+        $employee = employee::find($id);
+        $departments = department::get();
+
+        return view('roll.show', compact('roll', 'employee', 'departments'));
     }
 
     /**
@@ -57,7 +72,11 @@ class rollController extends Controller
      */
     public function edit($id)
     {
-        //
+        $roll = Roll::find($id);
+        // dd($roll);
+        $departments = department::get();
+        // dd($departments);
+        return view('roll.edit', compact('roll', 'departments'));
     }
 
     /**
@@ -69,7 +88,13 @@ class rollController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd(request()->all());
+        $roll = new Roll();
+        $roll -> name = request('name');
+        $roll -> salary = request('salary');
+        $roll -> department = request('department_name');
+        $roll ->save();
+        return redirect()->route('roll.index');
     }
 
     /**
@@ -80,6 +105,9 @@ class rollController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $roll = Roll::find($id);
+        if(!empty($roll))
+            $roll->delete();
+        return redirect()->route('roll.index');
     }
 }

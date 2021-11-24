@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\department;
 use Illuminate\Http\Request;
 
-class departmentController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,8 +38,15 @@ class departmentController extends Controller
     {
         $department = new department();
         $department-> name = $request->get('name');
-        $department->save();
-        return redirect()->route('department.index');
+        if($department->save())
+        {
+            return redirect()->route('department.index')->with(['msg'=>'department added']);
+        }
+        else
+        {
+            return redirect()->route('department.index')->withErrors(['msg'=>'department not added']);
+        }
+
     }
 
     /**
@@ -74,7 +81,6 @@ class departmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $department = new department();
         $department = department::find($id);
         $department-> name = $request->get('name');
         $department->save();

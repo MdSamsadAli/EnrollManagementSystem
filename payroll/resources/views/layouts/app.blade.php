@@ -38,7 +38,12 @@
 		
 		@if(Session::has('info'))
 			toastr.info("{{ Session::get('info')}}")		
-		@endif	
+		@endif
+
+
+		setTimeout((event) => {
+			$(".flash-msg").slideUp();
+		}, 2000);	
 	</script>
 </body>
 </html>

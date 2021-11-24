@@ -5,34 +5,32 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Edit Role : {{$role->name}}
-       </div>
+			Edit Role : 
+		</div>
 	   
 	   <div class="panel-body">
-			<form action ="{{ route('roles.update', ['id'=>$role->id]) }}" method="POST">
+			<form action ="{{ route('roll.update', $roll->id)}}" method="POST">
 				{{ csrf_field() }}
-				{{ method_field('PUT') }}
 				<div class="form-group">
 					<label for="name">Name</label>
-					<input type="text" name="name" value="{{$role->name}}" class="form-control">
+					<input type="text" name="name" value="{{$roll->name}}" class="form-control">
 				</div>
 				
 				<div class="form-group">
 					<label for="salary">Salary</label>
-					<input type="number" name="salary" value="{{$role->salary}}" class="form-control">
+					<input type="number" name="salary" value="{{$roll->salary}}" class="form-control">
 				</div>
 				
 				<div class="form-group">
 					<label for="department">Select a department</label>
-					<select name="department_id" id="department"  cols="5" rows="5" class="form-control">
-						@foreach($departments as $department)
-							<option value="{{ $department->id }}"
-								@if($role->department->id == $department->id)
-									selected							
-								@endif
-							   >{{ $department->name }}
-							</option>
+					<select name="department_name" id="department"  cols="5" rows="5" class="form-control">
+						@foreach ($departments as $department)
+						<option value="{{ $department->name }}"
+							selected							
+					   >{{ $department->name }}
+					</option>
 						@endforeach
+							
 					</select>
 				</div>
 				

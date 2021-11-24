@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\department;
 use App\Models\employee;
+use App\Models\Roll;
 use Illuminate\Http\Request;
 
-class employeeController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class employeeController extends Controller
      */
     public function index()
     {
-        $employees = employee::get();
+        $employees = employee::all();
         return view('employee.index', compact('employees'));
     }
 
@@ -25,7 +27,9 @@ class employeeController extends Controller
      */
     public function create()
     {
-        return view('employee.create');
+        $roll = Roll::get();
+        $departments = department::get();
+        return view('employee.create', compact('roll', 'departments'));
     }
 
     /**
@@ -36,7 +40,6 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $emp = new employee();
         $emp-> name = $request->get('name');
         $emp-> email = $request->get('email');
@@ -44,7 +47,8 @@ class employeeController extends Controller
         $emp-> town = $request->get('town');
         $emp-> city  = $request->get('city');
         $emp-> country = $request->get('country');
-        $emp-> role = $request->get('role');
+        $emp-> role = $request->get('roll_name');
+        $emp-> department = $request->get('department');
         $emp-> position = $request->get('position');
         $emp->save();
         return redirect()->route('employee.index');
@@ -58,7 +62,7 @@ class employeeController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -70,6 +74,7 @@ class employeeController extends Controller
     public function edit($id)
     {
         $employees = employee::find($id);
+        // dd($employees);
         return view('employee.edit', compact('employees'));
     }
 
@@ -90,6 +95,7 @@ class employeeController extends Controller
         $employee-> city  = $request->get('city');
         $employee-> country = $request->get('country');
         $employee-> role = $request->get('role');
+        $employee-> department = $request->get('department_name');
         $employee-> position = $request->get('position');
         $employee->save();
         return redirect()->route('employee.index');

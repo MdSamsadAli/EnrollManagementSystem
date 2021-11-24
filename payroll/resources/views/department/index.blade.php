@@ -4,6 +4,13 @@
 	<h1 class="text-center">Departments</h1>	
 	<hr>		
 	<a href="{{route('department.create')}}" class="btn btn-primary">Create</a>
+	<div class="flash-msg">
+		@if(Session::has('msg'))
+		<p style="background: green; color: white;">
+			{{Session::get('msg')}}
+		</p>
+		@endif
+	</div>
 	<table class= "table table-hover">
 		<thead>
 			<th>Department name</th>			
@@ -32,6 +39,12 @@
 			@endif		
 		</tbody>	
 	</table>
-        <div class="text-center">departmentLink</div>
-		{{-- <div class="text-center">{{ $departments->links() }}</div> --}}
+
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script>
+		setTimeout((event) => {
+			$(".flash-msg").slideUp();
+		}, 2000);
+
+		</script>
 @endsection

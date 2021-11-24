@@ -3,18 +3,21 @@
 @section('content')
 
 	<div class="col-lg-12">
-		<h1 class="page-header">Payroll : {{ $employee->name }}</h1>
+		{{-- <h1 class="page-header">Payroll : {{ $employee->name }}</h1> --}}
+		<h1 class="page-header">Payroll: EmployeeName</h1>
 	</div>
-		@if($employee->full_time)
+		{{-- @if($employee->full_time) --}}
 			<p><b>Full-Time</b> :  Yes</p>
-			<p><b>Base Salary</b>: {{ $employee->role->salary }}</p>
-		@else
+			{{-- <p><b>Base Salary</b>: {{ $employee->role->salary }}</p> --}}
+			<p>Base Salary </b>: 120000</p>
+		{{-- @else --}}
 			<p><b>Part-Time<b> : Yes</p>
 			<br>
 			<p><b>Base Salary<b>: 0</p>
-		@endif
+		{{-- @endif --}}
 		
-		<form action="{{ route('payrolls.store',['id'=>$employee->id])}}" method="POST"
+		{{-- <form action="{{ route('payrolls.store',['id'=>$employee->id])}}" method="POST" --}}
+			<form action="#" method="POST"
 			class="form-horizontal">
 				{{ csrf_field() }}
 			

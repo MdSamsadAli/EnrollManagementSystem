@@ -2,7 +2,7 @@
 
 @section('content')
 	<hr>	
-	<h1 class="text-center">Dashboard</h1>	
+		<h1 class="text-center">Dashboard</h1>	
 	<hr>
 		
 	<div class="col-lg-3 text-center">
@@ -15,21 +15,21 @@
 	<div class="col-lg-3 text-center">
 		<div class="panel panel-info">
 			<div class="panel-heading">Employee Count</div>
-			<div class="panel-body">employeecount</div>		
+			<div class="panel-body">{{$employees->count()}}</div>		
 		</div>
 	</div>
 	
 	<div class="col-lg-3 text-center">
 		<div class="panel panel-primary">
 			<div class="panel-heading">Role Count</div>
-			<div class="panel-body">rolles</div>		
+			<div class="panel-body">{{$rolls->count()}}</div>		
 		</div>
 	</div>
 	
 	<div class="col-lg-3 text-center">
 		<div class="panel panel-success">
 			<div class="panel-heading">Department</div>
-			<div class="panel-body">departments</div>		
+			<div class="panel-body">{{$departments->count()}}</div>		
 		</div>
 	</div>
 	
@@ -49,21 +49,25 @@
 		</thead>		
 			
 		<tbody>
-			{{-- @if($employees->count()> 0)
-				@foreach($employees as $employee) --}}
+			@if($employees->count()> 0)
+				@foreach($employees as $employee)
+					{{-- @dd($employee) --}}
 					<tr>		
-						<td>created at</td>
-						<td>employee_name</td>
-						<td>employee_name</td>
-						<td>employee_name</td>
-						<td>employee_name</td>
+						<td>
+							{{$employee->created_at}}
+						</td>
+						<td>{{$employee->name}}</td>
+						<td>{{$employee->email}}</td>
+						<td>{{$employee->role}}</td>
+						<td>{{$employee->department}}</td>
+						
 					</tr>
-				{{-- @endforeach --}}
-			{{-- @else --}}
+				@endforeach
+			@else 
 				<tr> 
 					<th colspan="5" class="text-center">Empty</th>
 				</tr>
-			{{-- @endif --}}
+			@endif
 		</tbody>							
 	</table>
 	

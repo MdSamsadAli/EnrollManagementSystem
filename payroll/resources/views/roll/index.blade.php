@@ -6,7 +6,6 @@
 		<h1 class="text-center">Roles</h1>	
 	<hr> 
 
-	{{-- <a href="{{ route('roles.create') }}" class="btn btn-primary">Create</a> --}}
     <a href="{{route('roll.create')}}" class="btn btn-primary">Create </a>
 		
 	<table class= "table table-hover">
@@ -19,36 +18,33 @@
 		</thead>	
 			
 		<tbody>
-			{{-- @if($roles->count()> 0) --}}
-				{{-- @foreach($roles as $role) --}}
+			@if($roll->count()> 0)
+				@foreach($roll as $roll)
 					<tr>						
-                        <td>roll Name</td>
-						{{-- <td><a href="{{ route('roles.show', ['slug' => $role->slug]) }}" >{{ $role->name}}</a></td>						 --}}
-						<td>department name</td>
-						{{-- <td>{{ $role->department->name }}</td> --}}
-                        <td>Salary</td>
-						{{-- <td>{{ $role->salary }}</td>	 --}}
 						<td>
-                            <a href="#" class="btn btn-info">Edit </a>
-							{{-- <a href="{{ route('roles.edit', ['id' => $role->id]) }}" class="btn btn-info">Edit</a> --}}
+							{{$roll->name}}
 						</td>
 						<td>
-                            <form action="#">
-							{{-- <form action="{{ route('roles.destroy', ['id' => $role->id]) }}" method="POST"> --}}
-								{{-- {{csrf_field() }} --}}
-								{{-- {{method_field('DELETE')}} --}}
-								<button class="btn btn-danger">Bin</button>
-							</form>
+							{{$roll->department}}
+						</td>
+						<td>
+							{{ $roll->salary }}
+						</td>	
+						<td>
+                            <a href="{{route('roll.edit', $roll->id)}}" class="btn btn-xs btn-info">Edit</a>
+						</td>
+						<td>
+							<a href="{{route('roll.destroy', $roll->id)}}" class="btn btn-xs btn-danger">Delete</a>
+
 						</td>
 					</tr>
-				{{-- @endforeach --}}
-			{{-- @else --}}
+				@endforeach
+			@else
 				<tr> 
 					<th colspan="5" class="text-center">Empty</th>
 				</tr>
-			{{-- @endif --}}
+			@endif
 		</tbody>
 	</table>
     <div class="text-center">rolllinks</div>
-	{{-- <div class="text-center">{{ $roles->links() }}</div> --}}
 @endsection
